@@ -333,13 +333,13 @@ load T_1_5m_Basin3.mat
 load T_7m_Basin3.mat
 
 
-%the outlier in T_1m_Basin4
+%the outlier in T_16m_Basin3
 
-% T_16m_Basin3 (1,1) =  T_16m_Basin3 (1,3) ;
-% T_16m_Basin3 (1,3) = T_16m_Basin3 (1,4) ;
-% T_16m_Basin3 (1,2) =  (T_16m_Basin3(1,1) + T_16m_Basin3(1,1))/2;
+T_16m_Basin3 (1,1) =  (T_19m_Basin3 (1,1) + T_14m_Basin3 (1,1)) / 2 ;
+T_16m_Basin3 (1,2) = (T_19m_Basin3 (1,2) + T_14m_Basin3 (1,2)) / 2 ;
+T_16m_Basin3 (1,3) =  (T_19m_Basin3 (1,3) + T_14m_Basin3 (1,3)) / 2;
 
-dc = hsv(12); 
+dc = hsv(24); 
 
 
 startDate = datenum('07-15-20');                                                       
@@ -359,75 +359,69 @@ y8 = T_19m_Basin3 (:,1:308);
 y9 = T_21m_Basin3 (309:end,:);
 
 plot(xData,y1,'color',dc(1,:),'LineWidth',1.1)
-datetick('x','dd-mmm-yyyy','keepticks')
+datetick('x','dd-mmm-yyyy','keepticks');
 
 hold on
 
-plot(xData,y2,'color',dc(2,:),'LineWidth',1.1)
+plot(xData,y2,'color',dc(3,:),'LineWidth',1.1)
 
 
 hold on
 
-plot(xData,y3,'color',dc(3,:),'LineWidth',1.1)
+plot(xData,y3,'color',dc(6,:),'LineWidth',1.1)
 
 hold on
 
-plot(xData,y4,'color',dc(4,:),'LineWidth',1.1)
+plot(xData,y4,'color',dc(9,:),'LineWidth',1.1)
 
 hold on
 
-plot(xData,y5,'color',dc(5,:),'LineWidth',1.1)
+plot(xData,y5,'color',dc(12,:),'LineWidth',1.1)
 
 hold on
 
-plot(xData,y6,'color',dc(6,:),'LineWidth',1.1)
+plot(xData,y6,'color',dc(15,:),'LineWidth',1.1)
 
 hold on
 
-plot(xData,y7,'color',dc(8,:),'LineWidth',1.1)
+plot(xData,y7,'color',dc(18,:),'LineWidth',1.1)
 
 hold on
 
-plot(xData,y8,'color',dc(10,:),'LineWidth',1.1)
+plot(xData,y8,'color',dc(21,:),'LineWidth',1.1)
 
 hold on
 
-plot(xData,y9,'color',dc(12,:),'LineWidth',1.1)
+plot(xData,y9,'color',dc(24,:),'LineWidth',1.1)
 
-% hold on
-% 
-% y9 = FinalTemp (:,8);
-% plot(xData,y9,'color',dc(10,:),'LineWidth',1.1)
-% 
-% hold on
-% 
-% y10 = FinalTemp (:,9);
-% plot(xData,y10,'color',dc(11,:),'LineWidth',1.1)
-% 
-% hold on
-% 
-% y11 = T_TOP_1;
-% plot(xData2,y11,'color',dc(12,:),'LineWidth',1.1)
-% 
-% hold on
-% 
-% y12 = FinalTemp (:,10) ;
-% plot(xData,y12,'color',dc(13,:),'LineWidth',1.1)
+%For finding out the ice cover period
+date1 = 309;                                                       
+date2 = 616;
+[sd,ed] =  icecover(T_21m_Basin3,T_1m_Basin3,date1,date2) ;
+sdice = xData (1,sd);
+edice = xData (1,ed);
 
-lgd = legend('1 m','1.5 m','4 m','7 m','10 m','14 m','16 m','19 m','21 m') 
+box1= [sdice sdice edice edice];
+boxy=[-5 30 30 -5];
+patch(box1,boxy,[0.220,0.220,0.220] ,'EdgeColor','none', 'FaceAlpha',0.2)
+
+xlim=get(gca,'xlim');
+datenum(xlim);
+
+lgd = legend('1 m','1.5 m','4 m','7 m','10 m','14 m','16 m','19 m','21 m','Ice cover period') ;
 v = get(lgd,'title');
 set(v,'string','Temperature at:');
 
 xlabel('Date','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 ylabel('Temperature (°C)','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 
+% xline (738110)
+% xline (738268)
 
-title('Daily Temperature at Tantare bassin3 ','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
+title('Daily Temperature at Tantare basin3 ','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 
 hold off
 
-xlim=get(gca,'xlim');
-datenum(xlim)
 
 
 
