@@ -394,7 +394,8 @@ hold on
 
 plot(xData,y9,'color',dc(24,:),'LineWidth',1.1)
 
-%For finding out the ice cover period
+%For finding out the ice cover period using the function 'icecover'
+
 date1 = 309;                                                       
 date2 = 616;
 [sd,ed] =  icecover(T_21m_Basin3,T_1m_Basin3,date1,date2) ;
@@ -415,8 +416,6 @@ set(v,'string','Temperature at:');
 xlabel('Date','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 ylabel('Temperature (°C)','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 
-% xline (738110)
-% xline (738268)
 
 title('Daily Temperature at Tantare basin3 ','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 

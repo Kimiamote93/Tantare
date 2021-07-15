@@ -160,10 +160,10 @@ y5 = T_10m_Basin4 (6:end,:);
 y6 = T_14m_Basin4 (309:end,:);
 
 
-plot(xData,y1,'color',dc(1,:),'LineWidth',1.1)
-datetick('x','dd-mmm-yyyy','keepticks')
-
-hold on
+% plot(xData,y1,'color',dc(1,:),'LineWidth',1.1)
+% datetick('x','dd-mmm-yyyy','keepticks')
+% 
+% hold on
 
 
 plot(xData,y2,'color',dc(2,:),'LineWidth',1.1)
@@ -210,7 +210,7 @@ plot(xData,y6,'color',dc(8,:),'LineWidth',1.1)
 % y12 = FinalTemp (:,10) ;
 % plot(xData,y12,'color',dc(13,:),'LineWidth',1.1)
 
-lgd = legend('1 m','2 m','4 m','7 m','10 m','14 m') 
+lgd = legend('2 m','4 m','7 m','10 m','14 m') 
 v = get(lgd,'title');
 set(v,'string','Temperature at:');
 
@@ -218,7 +218,7 @@ xlabel('Date','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 ylabel('Temperature (°C)','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 
 
-title('Daily Temperature at Tantare bassin4 ','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
+title('Daily Temperature at Tantare basin4 ','FontSize',12,'FontName','Times New Roman','FontWeight','bold')
 
 hold off
 
